@@ -1,10 +1,10 @@
 import glob
+import logging
 
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-import logging
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -69,16 +69,16 @@ eigenvalues = pca.explained_variance_
 # Print the data
 logger.info("Autovectores (Componentes Principales):")
 logger.info(eigenvectors)
-logger.info("\nAutovalores (Varianza explicada por cada componente):")
+logger.info("Autovalores (Varianza explicada por cada componente):")
 logger.info(eigenvalues)
 
 # We can also get the explained variance ratio which is the percentage of variance explained by each component
 explained_variance = pca.explained_variance_ratio_
-logger.info("\nVarianza explicada por cada componente principal:")
+logger.info("Varianza explicada por cada componente principal:")
 logger.info(explained_variance)
 
 # Lastly, we can get the cumulative explained variance ratio which is the cumulative sum of the explained variance ratio
-logger.info("\nVarianza explicada acumulada:")
+logger.info("Varianza explicada acumulada:")
 logger.info(explained_variance.cumsum())
 
 plt.figure(figsize=(8, 4))
@@ -89,7 +89,8 @@ plt.ylabel('Autovalores')
 plt.grid(True)
 plt.show()
 
-# The scree plot shows the eigenvalues of the principal components and it is used to determine the number of components to keep
+# The scree plot shows the eigenvalues of the principal components and it is used to determine
+# the number of components to keep
 # We can see that the first two components explain more variance and the rest of the components explain less variance
 # This is known as the elbow method and it is used to determine the number of components to keep
 
@@ -143,4 +144,3 @@ top_students = df_top_students.head(3)
 # We log the top 3 students
 logger.info("Top 3 estudiantes basados en la primera componente principal:")
 logger.info(top_students)
-
